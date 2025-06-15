@@ -524,7 +524,7 @@ body {
 .form-input:focus,
 .form-select:focus {
   outline: none;
-  border-color: #84fab0;
+  border-color: #84faaf72;
   background: rgba(132, 250, 176, 0.05);
   box-shadow: 0 0 0 4px rgba(132, 250, 176, 0.1);
 }
