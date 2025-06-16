@@ -1,19 +1,28 @@
 ﻿'use client';
 import { useState, useEffect } from 'react';
 import AddPlantForm from './AddPlantForm';
+import EditPlantForm from './EditPlantForm';
 
 export default function PlantDashboard() {
   const [plants, setPlants] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [plantToDelete, setPlantToDelete] = useState(null);
+  const [plantToEdit, setPlantToEdit] = useState(null);
+  const [showHistory, setShowHistory] = useState(null);
 
   // Load plants from localStorage on component mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedPlants = localStorage.getItem('plantTrackerData');
       if (savedPlants) {
-        setPlants(JSON.parse(savedPlants));
+        const parsedPlants = JSON.parse(savedPlants);
+        // Migrate old data structure to include watering history
+        const migratedPlants = parsedPlants.map(plant => ({
+          ...plant,
+          wateringHistory: plant.wateringHistory || [plant.lastWatered]
+        }));
+        setPlants(migratedPlants);
       }
       setIsLoading(false);
     }
@@ -37,20 +46,43 @@ export default function PlantDashboard() {
   };
 
   const waterPlant = (id) => {
+    const today = new Date().toISOString().split('T')[0];
     setPlants(plants.map(plant => 
       plant.id === id 
-        ? { ...plant, lastWatered: new Date().toISOString().split('T')[0] }
+        ? { 
+            ...plant, 
+            lastWatered: today,
+            wateringHistory: [...(plant.wateringHistory || []), today]
+          }
         : plant
     ));
   };
   
   const addPlant = (newPlant) => {
-    setPlants([...plants, newPlant]);
+    const plantWithHistory = {
+      ...newPlant,
+      wateringHistory: [newPlant.lastWatered]
+    };
+    setPlants([...plants, plantWithHistory]);
+  };
+
+  const updatePlant = (updatedPlant) => {
+    setPlants(plants.map(plant => 
+      plant.id === updatedPlant.id ? updatedPlant : plant
+    ));
   };
 
   const deletePlant = (id) => {
     setPlants(plants.filter(plant => plant.id !== id));
     setPlantToDelete(null);
+  };
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric',
+      year: 'numeric'
+    });
   };
 
   if (isLoading) {
@@ -119,6 +151,20 @@ export default function PlantDashboard() {
                       <h3 className="plant-name">{plant.name}</h3>
                       <div className="card-actions">
                         <button 
+                          className="btn-icon-action history-btn"
+                          onClick={() => setShowHistory(plant)}
+                          title="View watering history"
+                        >
+                          📅
+                        </button>
+                        <button 
+                          className="btn-icon-action edit-btn"
+                          onClick={() => setPlantToEdit(plant)}
+                          title="Edit plant"
+                        >
+                          ✏️
+                        </button>
+                        <button 
                           className="btn-icon-action delete-btn"
                           onClick={() => setPlantToDelete(plant)}
                           title="Delete plant"
@@ -135,8 +181,14 @@ export default function PlantDashboard() {
                       </p>
                       <p className="plant-info">
                         <span className="info-icon">💧</span>
-                        Last watered: {new Date(plant.lastWatered).toLocaleDateString()}
+                        Last watered: {formatDate(plant.lastWatered)}
                       </p>
+                      {plant.wateringHistory && plant.wateringHistory.length > 1 && (
+                        <p className="plant-info">
+                          <span className="info-icon">📊</span>
+                          Watered {plant.wateringHistory.length} times
+                        </p>
+                      )}
                     </div>
                     <div className="plant-actions">
                       <span className={`water-status ${waterStatus.status}`}>
@@ -169,6 +221,14 @@ export default function PlantDashboard() {
           />
         )}
 
+        {plantToEdit && (
+          <EditPlantForm
+            plant={plantToEdit}
+            onUpdatePlant={updatePlant}
+            onClose={() => setPlantToEdit(null)}
+          />
+        )}
+
         {plantToDelete && (
           <div className="modal-overlay" onClick={() => setPlantToDelete(null)}>
             <div className="modal-content delete-modal" onClick={(e) => e.stopPropagation()}>
@@ -188,6 +248,38 @@ export default function PlantDashboard() {
                   onClick={() => deletePlant(plantToDelete.id)}
                 >
                   Delete Plant
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showHistory && (
+          <div className="modal-overlay" onClick={() => setShowHistory(null)}>
+            <div className="modal-content history-modal" onClick={(e) => e.stopPropagation()}>
+              <h2 className="modal-title">💧 Watering History</h2>
+              <h3 className="history-plant-name">{showHistory.name}</h3>
+              
+              <div className="history-list">
+                {showHistory.wateringHistory && showHistory.wateringHistory.length > 0 ? (
+                  [...showHistory.wateringHistory].reverse().map((date, index) => (
+                    <div key={index} className="history-item">
+                      <span className="history-icon">💧</span>
+                      <span className="history-date">{formatDate(date)}</span>
+                      {index === 0 && <span className="history-badge">Latest</span>}
+                    </div>
+                  ))
+                ) : (
+                  <p className="no-history">No watering history available</p>
+                )}
+              </div>
+              
+              <div className="form-actions">
+                <button 
+                  className="btn btn-primary" 
+                  onClick={() => setShowHistory(null)}
+                >
+                  Close
                 </button>
               </div>
             </div>

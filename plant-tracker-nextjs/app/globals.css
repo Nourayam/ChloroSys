@@ -687,3 +687,43 @@ body {
   font-size: 1.3rem;
   padding: 0.4rem;
 }
+
+/* Care suggestion box */
+.care-suggestion {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(132, 250, 176, 0.1) 0%, rgba(143, 211, 244, 0.1) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(132, 250, 176, 0.3);
+}
+
+.suggestion-text {
+  color: var(--leaf-green);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.btn-suggestion {
+  background: linear-gradient(45deg, #84fab0 0%, #8fd3f4 100%);
+  color: var(--dark-green);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.btn-suggestion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(132, 250, 176, 0.4);
+}
+
+.auto-label {
+  color: #84fab0;
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: italic;
+}
