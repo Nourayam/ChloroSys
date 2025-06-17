@@ -1,13 +1,12 @@
-import PlantDashboard from '../components/PlantDashboard';
+'use client';
 import Link from 'next/link';
 
-export default function Home() {
+export default function CalendarButton() {
   return (
-    <main>
-      <PlantDashboard />
+    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
       <Link href="/calendar" className="calendar-nav-btn">
         📅 View Calendar
       </Link>
-    </main>
+    </div>
   );
 }
