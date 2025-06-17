@@ -1091,3 +1091,21 @@ body {
   font-style: italic;
   padding: 2rem;
 }
+
+.calendar-nav-btn {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
