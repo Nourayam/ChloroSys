@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import AddPlantForm from './AddPlantForm';
 import EditPlantForm from './EditPlantForm';
-
+import { findPlantCare, plantCareDatabase, getCareByType } from './plantCareDatabase';
 export default function PlantDashboard() {
   const [plants, setPlants] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -10,6 +10,7 @@ export default function PlantDashboard() {
   const [plantToDelete, setPlantToDelete] = useState(null);
   const [plantToEdit, setPlantToEdit] = useState(null);
   const [showHistory, setShowHistory] = useState(null);
+  const [showCareModal, setShowCareModal] = useState(null);
 
   // Load plants from localStorage on component mount
   useEffect(() => {
@@ -150,29 +151,36 @@ export default function PlantDashboard() {
                     <div className="plant-card-header">
                       <h3 className="plant-name">{plant.name}</h3>
                       <div className="card-actions">
-                        <button 
-                          className="btn-icon-action history-btn"
-                          onClick={() => setShowHistory(plant)}
-                          title="View watering history"
-                        >
-                          📅
-                        </button>
-                        <button 
-                          className="btn-icon-action edit-btn"
-                          onClick={() => setPlantToEdit(plant)}
-                          title="Edit plant"
-                        >
-                          ✏️
-                        </button>
-                        <button 
-                          className="btn-icon-action delete-btn"
-                          onClick={() => setPlantToDelete(plant)}
-                          title="Delete plant"
-                        >
-                          🗑️
-                        </button>
-                        <span className="plant-emoji">🪴</span>
-                      </div>
+                      <button 
+                        className="btn-icon-action history-btn"
+                        onClick={() => setShowHistory(plant)}
+                        title="View watering history"
+                      >
+                        📅
+                      </button>
+                      <button 
+                        className="btn-icon-action edit-btn"
+                        onClick={() => setPlantToEdit(plant)}
+                        title="Edit plant"
+                      >
+                        ✏️
+                      </button>
+                      <button 
+                        className="btn-icon-action delete-btn"
+                        onClick={() => setPlantToDelete(plant)}
+                        title="Delete plant"
+                      >
+                        🗑️
+                      </button>
+                      <button 
+                        className="btn-icon-action care-btn"
+                        onClick={() => setShowCareModal(plant)}
+                        title="View care tips"
+                      >
+                        {findPlantCare(plant.name)?.emoji || '🪴'}
+                      </button>
+                    
+                    </div>
                     </div>
                     <div className="plant-details">
                       <p className="plant-info">
@@ -284,6 +292,45 @@ export default function PlantDashboard() {
               </div>
             </div>
           </div>
+        )}
+
+        {showCareModal && (
+          <div className="modal-overlay" onClick={() => setShowCareModal(null)}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <h2 className="modal-title">{showCareModal.name} Care Guide</h2>
+              {findPlantCare(showCareModal.name) ? (
+                <div className="care-suggestion">
+                  <p className="suggestion-text">
+                    <strong>Recommended Care:</strong> {findPlantCare(showCareModal.name).careNotes}
+                  </p>
+                  <p className="suggestion-text">
+                    <strong>Watering:</strong> Every {findPlantCare(showCareModal.name).wateringFrequency} days
+                  </p>
+                  <p className="suggestion-text">
+                    <strong>Type:</strong> {findPlantCare(showCareModal.name).plantType}
+                  </p>
+                </div>
+              ) : (
+                <div className="care-suggestion">
+                  <p className="suggestion-text">
+                    No specific care information found for this plant. Here are some general tips:
+                  </p>
+                  <p className="suggestion-text">
+                    {getCareByType('houseplant')}
+                  </p>
+                </div>
+              )}
+              <div className="form-actions">
+                <button 
+                  className="btn btn-primary" 
+                  onClick={() => setShowCareModal(null)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        
         )}
       </div>
     </div>

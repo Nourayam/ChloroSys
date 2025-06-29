@@ -74,8 +74,8 @@ export default function PlantDashboard() {
       <div className="dashboard-container">
         <header className="app-header">
           <div className="header-decoration">🌿</div>
-          <h1 className="app-title">Plant Watering Tracker</h1>
-          <p className="app-subtitle">Keep your green friends happy and hydrated</p>
+          <h1 className="app-title">ChloroSys</h1>
+          <p className="app-subtitle">Keep Your Plants Happy, Healthy & Hydrated</p>
         </header>
 
         {plants.length === 0 ? (

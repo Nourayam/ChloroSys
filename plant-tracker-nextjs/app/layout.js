@@ -1,8 +1,8 @@
 ﻿import './globals.css'
 
 export const metadata = {
-  title: 'Plant Watering Tracker',
-  description: 'Keep your plants happy and hydrated',
+  title: 'ChloroSys',
+  description: 'Keep Your Plants Happy, Healthy & Hydrated',
 }
 
 export default function RootLayout({ children }) {

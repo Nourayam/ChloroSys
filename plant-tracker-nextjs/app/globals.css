@@ -37,9 +37,9 @@ body {
 .app-container {
   min-height: 100vh;
   background: 
-    radial-gradient(ellipse at top left, rgba(127, 176, 105, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, rgba(45, 110, 62, 0.3) 0%, transparent 50%),
-    linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    radial-gradient(ellipse at top left, rgba(216, 236, 114, 0.401) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(61, 80, 28, 0.528) 0%, transparent 50%),
+    linear-gradient(135deg, #2b400b4e 0%, #28340733 100%);
   position: relative;
 }
 
@@ -88,12 +88,12 @@ body {
   text-align: center;
   margin-bottom: 3rem;
   padding: 3rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(123, 152, 76, 0.087);
   backdrop-filter: blur(10px);
   border-radius: 30px;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    0 20px 40px rgba(114, 138, 62, 0.569),
+    inset 0 0 0 1px rgba(119, 150, 47, 0.244);
   position: relative;
   overflow: hidden;
 }
@@ -105,7 +105,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(127, 176, 105, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 215, 159, 0.149) 0%, transparent 70%);
   animation: pulse 4s ease-in-out infinite;
 }
 
@@ -117,18 +117,18 @@ body {
 .header-decoration {
   font-size: 4rem;
   margin-bottom: 1rem;
-  animation: leaf-sway 3s ease-in-out infinite;
+  animation: leaf-sway 4s ease-in-out infinite;
 }
 
 .app-title {
-  font-size: 3.5rem;
-  background: linear-gradient(45deg, #84fab0 0%, #8fd3f4 50%, #a8edea 100%);
+  font-size: 4.1rem;
+  background: linear-gradient(45deg, #b7ca8e 0%, #c5ccb3 50%, #344a22 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   font-weight: 800;
-  text-shadow: 0 0 60px rgba(132, 250, 176, 0.5);
+  text-shadow: 0 0 40px rgba(177, 199, 131, 0.549);
   animation: glow 3s ease-in-out infinite alternate;
 }
 
@@ -138,9 +138,10 @@ body {
 }
 
 .app-subtitle {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.3rem;
-  font-weight: 300;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-shadow: 0 0 20px rgb(76, 91, 12);
   letter-spacing: 1px;
 }
 
@@ -178,12 +179,13 @@ body {
 .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #84fab0;
+  color: #ccff7fe5;
 }
 
 .stat-label {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
+  color: rgb(225, 255, 195);
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 /* Enhanced plant cards */
@@ -227,7 +229,7 @@ body {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.3),
-    inset 0 0 0 1px rgba(132, 250, 176, 0.5);
+    inset 0 0 0 1px rgba(187, 250, 132, 0.5);
 }
 
 .plant-card.needs-water {
@@ -253,13 +255,13 @@ body {
 
 .plant-name {
   font-size: 1.6rem;
-  color: #84fab0;
+  color: #c1ef9f;
   font-weight: 600;
   margin: 0;
 }
 
 .plant-emoji {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   animation: plant-bounce 3s ease-in-out infinite;
 }
 
@@ -273,7 +275,7 @@ body {
 }
 
 .plant-info {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.824);
   margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -281,7 +283,7 @@ body {
 }
 
 .info-icon {
-  font-size: 1.2rem;
+  font-size: 1.7rem;
 }
 
 .plant-actions {
@@ -307,9 +309,9 @@ body {
 }
 
 .water-status.watered {
-  background: rgba(132, 250, 176, 0.2);
-  color: #84fab0;
-  box-shadow: 0 0 20px rgba(132, 250, 176, 0.3);
+  background: rgba(48, 89, 7, 0.326);
+  color: #9ffa84;
+  box-shadow: 0 0 20px rgba(188, 222, 18, 0.431);
 }
 
 .water-status.check-soon {
@@ -353,14 +355,14 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #84fab0 0%, #8fd3f4 100%);
-  color: var(--dark-green);
-  box-shadow: 0 5px 20px rgba(132, 250, 176, 0.4);
+  background: linear-gradient(45deg, #b0d8ee 0%, #125a98 100%);
+  color: var(--white);
+  box-shadow: 0 5px 20px rgb(144, 192, 255);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(132, 250, 176, 0.6);
+  box-shadow: 0 10px 30px rgba(31, 58, 97, 0.757)
 }
 
 .btn-water {
@@ -382,14 +384,14 @@ body {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: linear-gradient(45deg, #84fab0 0%, #8fd3f4 100%);
-  color: var(--dark-green);
+  background: linear-gradient(45deg, #99b478 20%, #434e0f 100%);
+  color: var(--white);
   border: none;
   font-size: 2.5rem;
   cursor: pointer;
   box-shadow: 
-    0 10px 30px rgba(132, 250, 176, 0.5),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+    0 10px 30px rgba(143, 163, 64, 0.835),
+    inset 0 0 0 2px rgba(74, 88, 14, 0.711);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   align-items: center;
@@ -399,8 +401,8 @@ body {
 .add-plant-btn:hover {
   transform: scale(1.1) rotate(90deg);
   box-shadow: 
-    0 15px 40px rgba(132, 250, 176, 0.7),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+    0 15px 40px rgb(230, 245, 210)
+    inset 0 0 0 2px rgb(125, 154, 65)
 }
 
 .btn-icon {
@@ -492,7 +494,7 @@ body {
 
 .modal-title {
   font-size: 2rem;
-  color: var(--leaf-green);
+  color: rgb(148, 200, 255);
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -557,7 +559,7 @@ body {
 .btn-icon-action {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
@@ -620,7 +622,7 @@ body {
 }
 
 .history-plant-name {
-  color: #84fab0;
+  color: #408043;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
@@ -662,8 +664,8 @@ body {
 }
 
 .history-badge {
-  background: #84fab0;
-  color: var(--dark-green);
+  background: rgba(92, 147, 188,1);
+  color: var(--white);
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.85rem;
@@ -723,7 +725,7 @@ body {
 }
 
 .auto-label {
-  color: #84fab0;
+  color: #7eb14a;
   font-size: 0.85rem;
   font-weight: normal;
   font-style: italic;
@@ -734,7 +736,7 @@ body {
   position: fixed;
   bottom: 2rem;
   left: 2rem;
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #c6e8af3a 0%, #557b348a 100%);
   color: white;
   padding: 1rem 2rem;
   border-radius: 30px;
@@ -743,30 +745,30 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 10px 30px rgba(102, 234, 122, 0.5);
   transition: all 0.3s ease;
   z-index: 100;
 }
 
 .calendar-nav-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+  box-shadow: 0 15px 40px rgba(164, 234, 102, 0.316);
 }
 
 .back-nav-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #84fab0;
+  gap: 0.6rem;
+  color: #75a979;
   text-decoration: none;
-  font-weight: 600;
-  padding: 1rem 2rem;
+  font-weight: 900;
+  padding: 1rem 3rem;
   margin: 2rem;
   transition: all 0.3s ease;
 }
 
 .back-nav-btn:hover {
-  color: #8fd3f4;
+  color: #bcf48f;
   transform: translateX(-5px);
 }
 
@@ -805,13 +807,13 @@ body {
 }
 
 .view-btn.active {
-  background: linear-gradient(45deg, #84fab0 0%, #8fd3f4 100%);
-  color: var(--dark-green);
+  background: linear-gradient(45deg, #3a490d 0%, #7bab2ecd 100%);
+  color: var(--white);
 }
 
 .today-btn {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #4d5a10 20%, #9fec57e1 100%);
   color: white;
   border: none;
   border-radius: 25px;
@@ -844,7 +846,7 @@ body {
 .nav-btn {
   background: none;
   border: none;
-  color: #84fab0;
+  color: #b9fa847f;
   font-size: 2rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -858,8 +860,10 @@ body {
 
 .month-title {
   font-size: 2rem;
-  color: #84fab0;
+  color: #cbe78e;
   font-weight: 600;
+  text-shadow: 0 0 30px rgba(233, 240, 231, 0.797);
+  
 }
 
 /* Calendar Grid */
@@ -904,7 +908,7 @@ body {
 }
 
 .calendar-day.today {
-  border-color: #667eea;
+  border-color: #729145;
   background: rgba(102, 126, 234, 0.1);
 }
 
@@ -938,7 +942,7 @@ body {
 .water-count {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #84fab0;
+  color: #85c590;
 }
 
 .water-icon {
@@ -969,7 +973,7 @@ body {
 }
 
 .week-day.today {
-  border-color: #667eea;
+  border-color: #415d27;
   background: rgba(102, 126, 234, 0.1);
 }
 
@@ -982,7 +986,7 @@ body {
 
 .week-day-name {
   font-weight: 600;
-  color: #84fab0;
+  color: #b1fa84;
   margin-bottom: 0.25rem;
 }
 
@@ -1028,7 +1032,7 @@ body {
 }
 
 .upcoming-title {
-  color: #84fab0;
+  color: #a7fa84;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -1051,7 +1055,7 @@ body {
 }
 
 .upcoming-day:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.176);
   border-color: rgba(132, 250, 176, 0.3);
 }
 
@@ -1096,7 +1100,7 @@ body {
   position: fixed;
   bottom: 2rem;
   left: 2rem;
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #758549 0%, #56972d 100%);
   color: white;
   padding: 1rem 2rem;
   border-radius: 30px;
@@ -1109,3 +1113,28 @@ body {
   transition: all 0.3s ease;
   z-index: 100;
 }
+
+.care-btn:hover {
+  background: rgba(132, 250, 176, 0.2);
+  box-shadow: 0 0 20px rgba(132, 250, 176, 0.4);
+  transform: scale(1.1);
+}
+
+.care-suggestion {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(132, 250, 176, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(132, 250, 176, 0.3);
+}
+
+.suggestion-text {
+  margin-bottom: 1rem;
+  color: var(--dark-green);
+  line-height: 1.6;
+}
+
+.suggestion-text strong {
+  color: var(--leaf-green);
+}
+
